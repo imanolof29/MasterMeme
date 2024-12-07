@@ -1,13 +1,16 @@
 package com.imanolortiz.mastermeme.navigation
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
 
-sealed interface Routes{
 
-    @Serializable
-    data object YourMemeScreen: Routes
+@Serializable
+data object YourMemeScreen
 
-    @Serializable
-    data object NewMemeScreen: Routes
+@Serializable
+@Parcelize
+data class NewMemeScreen(
+    val meme: Int
+): Parcelable
 
-}

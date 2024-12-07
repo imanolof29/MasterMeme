@@ -1,31 +1,35 @@
 package com.imanolortiz.mastermeme.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
+import com.imanolortiz.mastermeme.navigation.type.createNavType
 import com.imanolortiz.mastermeme.ui.screens.memes.YourMemesScreen
 import com.imanolortiz.mastermeme.ui.screens.newmeme.NewMemeScreen
+import kotlin.reflect.typeOf
 
 @Composable
-fun AppNavigation(modifier: Modifier = Modifier) {
+fun AppNavigation() {
 
     val navController = rememberNavController()
 
     NavHost(
         navController = navController,
-        startDestination = Routes.YourMemeScreen
+        startDestination = YourMemeScreen
     ){
-        composable<Routes.YourMemeScreen>{
+        composable<YourMemeScreen>{
             YourMemesScreen(
-                onNewMeme = {
-                    navController.navigate(Routes.NewMemeScreen)
+                onNewMeme = { meme ->
+                    navController.navigate(NewMemeScreen(meme = meme))
                 }
             )
         }
-        composable<Routes.NewMemeScreen>{
+        composable<NewMemeScreen>(typeMap = mapOf(typeOf<NewMemeScreen>() to createNavType<NewMemeScreen>())){ backStackEntry ->
+            val newMeme: NewMemeScreen = backStackEntry.toRoute()
             NewMemeScreen(
+                meme = newMeme.meme,
                 onBackClick = {
                     navController.navigateUp()
                 }

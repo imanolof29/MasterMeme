@@ -14,6 +14,7 @@ import com.imanolortiz.mastermeme.ui.screens.newmeme.components.NewMemeTopAppBar
 @Composable
 fun NewMemeScreen(
     modifier: Modifier = Modifier,
+    meme: Int,
     onBackClick: () -> Unit
 ) {
     Scaffold(
@@ -33,7 +34,7 @@ fun NewMemeScreen(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ){
-            Text("Nuevo meme")
+            Text("Nuevo meme $meme")
         }
     }
 }
