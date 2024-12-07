@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.imanolortiz.mastermeme.ui.screens.memes.YourMemesScreen
+import com.imanolortiz.mastermeme.navigation.AppNavigation
 import com.imanolortiz.mastermeme.ui.theme.MasterMemeTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MasterMemeTheme {
-                YourMemesScreen()
+                AppNavigation()
             }
         }
     }

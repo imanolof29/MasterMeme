@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -36,7 +37,10 @@ import com.imanolortiz.mastermeme.ui.screens.memes.components.MemesTopAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun YourMemesScreen(modifier: Modifier = Modifier) {
+fun YourMemesScreen(
+    modifier: Modifier = Modifier,
+    onNewMeme: () -> Unit
+) {
 
     var showBottomSheet by remember { mutableStateOf(false) }
 
@@ -86,7 +90,10 @@ fun YourMemesScreen(modifier: Modifier = Modifier) {
                                 resource = painterResource(id = image),
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .aspectRatio(1f)
+                                    .aspectRatio(1f),
+                                onClick = {
+                                    onNewMeme()
+                                }
                             )
                         }
                     }
