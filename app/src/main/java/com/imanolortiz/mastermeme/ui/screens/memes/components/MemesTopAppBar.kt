@@ -14,7 +14,7 @@ fun MemesTopAppBar(modifier: Modifier = Modifier) {
     TopAppBar(
         title = {
             Text(
-                text = stringResource(id = R.string.top_app_bar),
+                text = stringResource(id = R.string.your_memes_app_bar),
                 modifier = modifier
             )
         },

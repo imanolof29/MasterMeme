@@ -25,7 +25,11 @@ fun AppNavigation(modifier: Modifier = Modifier) {
             )
         }
         composable<Routes.NewMemeScreen>{
-            NewMemeScreen()
+            NewMemeScreen(
+                onBackClick = {
+                    navController.navigateUp()
+                }
+            )
         }
     }
 }

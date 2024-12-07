@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MasterMeme</string>
-    <string name="top_app_bar">Your memes</string>
+    <string name="your_memes_app_bar">Your memes</string>
+    <string name="new_meme_app_bar">New meme</string>
     <string name="modal_title">Choose template</string>
     <string name="modal_subtitle">Choose template for your next meme masterpiece</string>
     <string name="empty_placeholder">Tap + button to create your first meme</string>

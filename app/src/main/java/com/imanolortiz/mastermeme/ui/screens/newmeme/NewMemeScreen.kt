@@ -9,14 +9,27 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.imanolortiz.mastermeme.ui.screens.newmeme.components.NewMemeTopAppBar
 
 @Composable
-fun NewMemeScreen(modifier: Modifier = Modifier) {
+fun NewMemeScreen(
+    modifier: Modifier = Modifier,
+    onBackClick: () -> Unit
+) {
     Scaffold(
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize(),
+        topBar = {
+            NewMemeTopAppBar(
+                onBackClick = {
+                    onBackClick()
+                }
+            )
+        }
     ){ innerPadding ->
         Column(
-            modifier = Modifier.fillMaxSize().padding(innerPadding),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ){
