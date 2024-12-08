@@ -5,4 +5,10 @@
     <string name="modal_title">Choose template</string>
     <string name="modal_subtitle">Choose template for your next meme masterpiece</string>
     <string name="empty_placeholder">Tap + button to create your first meme</string>
+
+    <string name="save_device_title">Save to device</string>
+    <string name="save_device_description">Save created meme in the files of your devices</string>
+
+    <string name="share_meme_title">Share the meme</string>
+    <string name="share_meme_description">Share your meme or open it in the other App</string>
 </resources>
