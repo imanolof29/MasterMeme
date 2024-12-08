@@ -27,7 +27,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
 import com.imanolortiz.mastermeme.R
 import com.imanolortiz.mastermeme.ui.screens.newmeme.components.NewMemeBottomSheetComponent
 import com.imanolortiz.mastermeme.ui.screens.newmeme.components.NewMemeTopAppBar
