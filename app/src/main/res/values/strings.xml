@@ -11,4 +11,10 @@
 
     <string name="share_meme_title">Share the meme</string>
     <string name="share_meme_description">Share your meme or open it in the other App</string>
+
+    <string name="add_text_dialog">Text</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="tap_twice">Tap twice to edit</string>
 </resources>
