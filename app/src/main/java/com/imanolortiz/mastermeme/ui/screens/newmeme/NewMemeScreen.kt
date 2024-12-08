@@ -32,18 +32,18 @@ import com.imanolortiz.mastermeme.ui.screens.newmeme.components.NewMemeBottomShe
 import com.imanolortiz.mastermeme.ui.screens.newmeme.components.NewMemeTopAppBar
 import com.imanolortiz.mastermeme.ui.screens.newmeme.components.PrimaryButton
 import com.imanolortiz.mastermeme.ui.screens.newmeme.components.SecondaryButton
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewMemeScreen(
     modifier: Modifier = Modifier,
     meme: Int,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    viewModel: NewMemeViewModel = koinViewModel()
 ) {
 
-    var showBottomSheet by remember { mutableStateOf(false) }
-
-    var openAlertDialog by remember { mutableStateOf(false) }
+    val state = viewModel.state
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -58,13 +58,13 @@ fun NewMemeScreen(
             BottomAppBar{
                 PrimaryButton(
                     onClick = {
-                        openAlertDialog = true
+                        viewModel.onEvent(NewMemeEvent.OnAddTextClick)
                     },
                     text = "Add text"
                 )
                 SecondaryButton(
                     onClick = {
-                        showBottomSheet = true
+                        viewModel.onEvent(NewMemeEvent.SaveMemeClick)
                     },
                     text = "Save meme"
                 )
@@ -84,9 +84,9 @@ fun NewMemeScreen(
                 contentScale = ContentScale.Crop
             )
         }
-        if(openAlertDialog){
+        if(state.showTextDialog){
             AlertDialog(
-                onDismissRequest = { openAlertDialog = false },
+                onDismissRequest = { viewModel.onEvent(NewMemeEvent.Dismiss) },
                 title = {
                      Text(stringResource(id = R.string.add_text_dialog))
                 },
@@ -105,24 +105,24 @@ fun NewMemeScreen(
                 },
                 confirmButton = {
                     TextButton(
-                        onClick = { openAlertDialog = false }
+                        onClick = { viewModel.onEvent(NewMemeEvent.Dismiss) }
                     ){
                         Text(stringResource(id = R.string.ok))
                     }
                 },
                 dismissButton = {
                     TextButton(
-                        onClick = { openAlertDialog = false }
+                        onClick = { viewModel.onEvent(NewMemeEvent.Dismiss) }
                     ){
                         Text(stringResource(id = R.string.cancel))
                     }
                 }
             )
         }
-        if(showBottomSheet){
+        if(state.showSaveOptions){
             ModalBottomSheet(
                 onDismissRequest = {
-                    showBottomSheet = false
+                    viewModel.onEvent(NewMemeEvent.Dismiss)
                 }
             ){
                 Column(
